@@ -261,7 +261,7 @@ loglevel 3
     chmod 0771 /data/dalvik-cache
 
     # cache/dalvik-cache for froyo
-    symlink /dbdata/dalvik-cache /cache/dalvik-cache
+    symlink /data/dalvik-cache /cache/dalvik-cache
     chown system system /cache/dalvik-cache
     chmod 0771 /cache/dalvik-cache
 
