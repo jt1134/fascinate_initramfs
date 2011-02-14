@@ -511,6 +511,10 @@ service ril-daemon /system/bin/rild
     user root
     group radio cache inet misc audio net_admin net_raw
 
+service glgps /system/bin/gpsd/glgps_samsungJupiter -c /system/etc/jupiter.xml
+    user root
+    group root
+
 service pppd_cdma /system/bin/pppd_runner
    user root
    group radio cache inet misc system
