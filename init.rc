@@ -360,7 +360,7 @@ chmod 0777 /dbdata/databases
     #insmod /modules/bc_example.ko
 
     # load FM Radio module
-    #insmod /lib/modules/Si4709_driver.ko
+    insmod /lib/modules/Si4709_driver.ko
     insmod /lib/modules/vibrator.ko
     insmod /lib/modules/melfas_touchkey.ko
 
@@ -772,8 +772,8 @@ chmod 555 /system/etc/mobileap/tethering_enable.sh
 # end of Mobile AP
 
 # for TvOut
-#service tvout /system/bin/tvoutserver
-#user system
+service tvout /system/bin/tvoutserver
+user system
 
 #PC Internet Share
 
