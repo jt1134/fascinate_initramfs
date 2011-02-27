@@ -69,9 +69,6 @@ loglevel 3
     chown system system /cache/recovery
     chmod 0770 /cache/recovery
 
-# mount system partitions
-    mount rfs /dev/block/stl9 /system check=no
-    
 # mount data partitions
     #mkdir /data 0771 system system
     #mount rfs /dev/block/mmcblk0p1 /data nosuid nodev check=no
@@ -112,8 +109,8 @@ on property:persist.service.adb.enable=1
 on property:persist.service.adb.enable=0
 	stop adbd
 
-service recovery /system/bin/recovery
+service recovery /sbin/recovery
 	oneshot
 
 
-#service adbd /sbin/adbd recovery
+service adbd /sbin/adbd recovery
