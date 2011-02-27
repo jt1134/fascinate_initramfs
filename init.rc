@@ -16,6 +16,7 @@ loglevel 3
     export ASEC_MOUNTPOINT /mnt/asec
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar
     export TMPDIR /data/local/tmp
+    export TERMINFO /system/etc/terminfo
 
 
 # Backward compatibility
@@ -129,7 +130,7 @@ loglevel 3
     # Mount /system rw first to give the filesystem a chance to save a checkpoint
  ##   mount yaffs2 mtd@system /system 
 
-    mount rfs /dev/block/stl9 /system ro check=no
+    mount rfs /dev/block/stl9 /system check=no
 
 #    mount yaffs2 mtd@system /system ro remount
 
@@ -524,11 +525,6 @@ service console /system/bin/sh
     group shell system log
     console
 
-service playlogos1 /system/bin/playlogos1
-    user root
-#	disabled
-    oneshot
-
 # adbd is controlled by the persist.service.adb.enable system property
 service adbd /sbin/adbd
     disabled
@@ -616,11 +612,11 @@ service killmediaserver /system/bin/killmediaserver
 #    group audio
 #    oneshot
 
-#service bootanim /system/bin/bootanimation2nd
-#    user graphics
-#    group graphics
-#    disabled
-#    oneshot
+service bootanim /system/bin/bootanimation
+    user graphics
+    group graphics
+    disabled
+    oneshot
 	
 # to enable wifi
 service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/wifi/bcm_supp.conf
