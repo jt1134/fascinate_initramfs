@@ -770,6 +770,7 @@ chmod 555 /system/etc/mobileap/tethering_enable.sh
 # for TvOut
 service tvout /system/bin/tvoutserver
 user system
+group system
 
 #PC Internet Share
 
