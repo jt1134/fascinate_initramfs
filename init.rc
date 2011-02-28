@@ -18,10 +18,8 @@ loglevel 3
     export TMPDIR /data/local/tmp
     export TERMINFO /system/etc/terminfo
 
-
 # Backward compatibility
     symlink /system/etc /etc
-
 	
 # to enable wifi
      setprop wifi.interface "eth0"
@@ -69,7 +67,6 @@ loglevel 3
     mkdir /mnt/asec  0700 root system
     mount tmpfs tmpfs /mnt/asec mode=0755,gid=1000
 
-
     mkdir /system
     mkdir /data 0771 system system
     chown system system /data
@@ -88,8 +85,6 @@ loglevel 3
     chown root root /sqlite_stmt_journals
     chmod 01777 /sqlite_stmt_journals
     mount tmpfs tmpfs /sqlite_stmt_journals size=4m
-
-
 
 ###################################################################    
 # create SEC_INTERNAL_STORAGE 1/2   
@@ -144,7 +139,6 @@ chmod 0771 /dbdata
 chmod 0777 /dbdata/databases   
 ###################################################################  
 
-
     mkdir /data/fota 0771 system system
     chown system system /data/fota
     chmod 0771 /data/fota
@@ -162,7 +156,6 @@ chmod 0777 /dbdata/databases
     chown system system /preinstall
     chmod 0771 /preinstall
 
-
 #Thomas Ryu, fota partition
 ###################################################################    
 # create SEC_INTERNAL_STORAGE 3/3   
@@ -172,9 +165,7 @@ chmod 0777 /dbdata/databases
    
 ###################################################################  
 
-
     # Same reason as /data above
-    #mount yaffs2 mtd@cache /cache nosuid nodev
     mount rfs /dev/block/stl11 /cache nosuid nodev check=no
     chown system cache /cache
     chmod 0770 /cache
@@ -190,7 +181,6 @@ chmod 0777 /dbdata/databases
     chown root root /cache/recovery/fota
     chmod 0771 /cache/recovery/fota
 
-
     # This may have been created by the recovery system with odd permissions
     chown system system /cache/recovery
     chmod 0770 /cache/recovery
@@ -198,7 +188,6 @@ chmod 0777 /dbdata/databases
     #change permissions on vmallocinfo so we can grab it from bugreports
     chown root log /proc/vmallocinfo
     chmod 0440 /proc/vmallocinfo
-
     
     mount rfs /dev/block/stl3 /efs nosuid nodev check=no
 	#removed by khoonk for parameter reading on 20100321
@@ -238,7 +227,6 @@ chmod 0777 /dbdata/databases
     chown radio radio /data/misc/radio
     chmod 0771 /data/misc/radio
     # give system access to wpa_supplicant.conf for backup and restore
-
 
 # to enable wifi
     mkdir /data/wifi 0777 wifi wifi
@@ -674,7 +662,6 @@ service installd /system/bin/installd
 	service sensor-daemon /system/bin/sensorserver_yamaha
 	user compass
 	group system log
-
 
 service racoon /system/bin/racoon
     socket racoon stream 600 system system
