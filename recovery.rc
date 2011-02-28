@@ -37,7 +37,9 @@ loglevel 3
 	insmod /lib/modules/fsr_stl.ko
 	insmod /lib/modules/rfs_glue.ko
 	insmod /lib/modules/rfs_fat.ko
-	
+	insmod /lib/modules/jbd2.ko
+	insmod /lib/modules/ext4.ko
+
 # parameter block
     mkdir /mnt/.lfs 0755 root root
 	insmod /lib/modules/j4fs.ko
@@ -77,6 +79,7 @@ loglevel 3
 ###################################################################  
 
     mount rfs /dev/block/stl11 /cache nosuid nodev check=no
+    mount ext4 /dev/block/stl11 /cache wait noatime nosuid nodev
     chown system cache /cache
     chmod 0770 /cache
 
