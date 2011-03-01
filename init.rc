@@ -34,6 +34,8 @@ loglevel 3
     insmod /lib/modules/fsr_stl.ko
     insmod /lib/modules/rfs_glue.ko
     insmod /lib/modules/rfs_fat.ko
+    insmod /lib/modules/jbd2.ko
+    insmod /lib/modules/ext4.ko
     insmod /lib/modules/j4fs.ko
 	#added by khoonk for parameter reading on 20100321
 	mount j4fs /dev/block/stl6 /mnt/.lfs
@@ -114,8 +116,10 @@ loglevel 3
 
 # mount mtd partitions
     mount rfs /dev/block/stl9 /system check=no
+    mount ext4 /dev/block/stl9 /system wait noatime nosuid nodev
 
     mount rfs /dev/block/mmcblk0p1 /data nosuid nodev check=no
+    mount ext4 /dev/block/mmcblk0p1 /data wait noatime nosuid nodev
     chown system system /data
     chmod 0771 /data
 
@@ -140,6 +144,7 @@ loglevel 3
 
     # Same reason as /data above
     mount rfs /dev/block/stl11 /cache nosuid nodev check=no
+    mount ext4 /dev/block/stl11 /cache wait noatime nosuid nodev
     chown system cache /cache
     chmod 0771 /cache
 
