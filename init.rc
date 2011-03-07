@@ -36,6 +36,8 @@ loglevel 3
     insmod /lib/modules/fsr_stl.ko
     insmod /lib/modules/rfs_glue.ko
     insmod /lib/modules/rfs_fat.ko
+    insmod /lib/modules/jbd2.ko
+    insmod /lib/modules/ext4.ko
     insmod /lib/modules/j4fs.ko
 	#added by khoonk for parameter reading on 20100321
 	mount j4fs /dev/block/stl6 /mnt/.lfs
@@ -119,10 +121,12 @@ loglevel 3
     write /dev/cpuctl/bg_non_interactive/cpu.shares 52
 
     mount rfs /dev/block/stl9 /system check=no
+    mount ext4 /dev/block/stl9 /system wait noatime nosuid nodev
 
 ###################################################################    
 # create SEC_INTERNAL_STORAGE 1/3   
     mount rfs /dev/block/mmcblk0p1 /data nosuid nodev noauto_da_alloc check=no
+    mount ext4 /dev/block/mmcblk0p1 /data wait noatime nosuid nodev
     chown system system /data
     chmod 0771 /data
    
@@ -132,6 +136,7 @@ loglevel 3
 # create dbdata partition
 mkdir /dbdata
 mount rfs /dev/block/stl10 /dbdata nosuid nodev check=no
+mount ext4 /dev/block/stl10 /dbdata wait noatime nosuid nodev
 mkdir /dbdata/databases
 chown system system /dbdata
 chown system system /dbdata/databases
@@ -167,6 +172,7 @@ chmod 0777 /dbdata/databases
 
     # Same reason as /data above
     mount rfs /dev/block/stl11 /cache nosuid nodev check=no
+    mount ext4 /dev/block/stl11 /cache wait noatime nosuid nodev
     chown system cache /cache
     chmod 0770 /cache
 
