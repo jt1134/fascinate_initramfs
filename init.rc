@@ -333,8 +333,9 @@ chmod 0777 /dbdata/databases
     insmod /lib/modules/vibrator.ko
     insmod /lib/modules/melfas_touchkey.ko
 
-    # load tun vpn module
+    # load tun vpn and cifs modules
     insmod /lib/modules/tun.ko
+    insmod /lib/modules/cifs.ko
 
 on boot
 # basic network init
