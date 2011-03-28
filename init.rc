@@ -295,8 +295,9 @@ loglevel 3
     insmod /lib/modules/vibrator.ko
     insmod /lib/modules/melfas_touchkey.ko
 
-    # load tun vpn module
+    # load tun vpn and cifs modules
     insmod /lib/modules/tun.ko
+    insmod /lib/modules/cifs.ko
 
     chmod 0662 /dev/log/events
     chmod 0662 /dev/log/system
