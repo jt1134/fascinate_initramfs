@@ -1,5 +1,4 @@
-#!/bin/sh
-export PATH=$PATH:/bin
+#!/sbin/sh
 
 # froyo make /sdcard a symlink to /mnt/sdcard, which confuses CWM
 rm /sdcard
@@ -70,7 +69,6 @@ ln -s busybox /sbin/killall
 ln -s busybox /sbin/killall5
 ln -s busybox /sbin/length
 ln -s busybox /sbin/less
-ln -s busybox /sbin/ln
 ln -s busybox /sbin/losetup
 ln -s busybox /sbin/ls
 ln -s busybox /sbin/lsmod
@@ -117,7 +115,6 @@ ln -s busybox /sbin/run-parts
 ln -s busybox /sbin/sed
 ln -s busybox /sbin/seq
 ln -s busybox /sbin/setsid
-ln -s busybox /sbin/sh
 ln -s busybox /sbin/sha1sum
 ln -s busybox /sbin/sha256sum
 ln -s busybox /sbin/sha512sum
