@@ -5,6 +5,8 @@ rm /sdcard
 mkdir /sdcard
 
 cd /sbin
+mv mount.wrapper mount
+chmod 755 mount
 ln -s busybox /sbin/[
 ln -s busybox /sbin/[[
 ln -s recovery /sbin/amend
@@ -87,7 +89,6 @@ ln -s busybox /sbin/mktemp
 ln -s recovery /sbin/mkyaffs2image
 ln -s busybox /sbin/modprobe
 ln -s busybox /sbin/more
-ln -s busybox /sbin/mount
 ln -s busybox /sbin/mountpoint
 ln -s busybox /sbin/mv
 ln -s recovery /sbin/nandroid
