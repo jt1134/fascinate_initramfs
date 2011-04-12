@@ -75,22 +75,22 @@ loglevel 3
 
 on boot
 
-	ifup lo
-	hostname localhost
-	domainname localdomain
-	class_start default
+    ifup lo
+    hostname localhost
+    domainname localdomain
+    class_start default
 
 # adbd is controlled by the persist.service.adb.enable system property
 service adbd /sbin/adbd 
-	disabled
+    disabled
 
 on property:persist.service.adb.enable=1
-	start adbd
+    start adbd
 
 on property:persist.service.adb.enable=0
-	stop adbd
+    stop adbd
 
 service recovery /sbin/start_recovery
-	oneshot
+    oneshot
 
 service adbd /sbin/adbd recovery
