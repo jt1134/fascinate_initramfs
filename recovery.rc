@@ -64,6 +64,7 @@ loglevel 3
     chown system system /cache/recovery
     chmod 0770 /cache/recovery
 
+    mount rfs /dev/block/stl9 /system check=no
     mount rfs /dev/block/stl11 /cache nosuid nodev check=no
     mount ext4 /dev/block/stl11 /cache wait noatime nosuid nodev
     chown system cache /cache
