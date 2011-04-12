@@ -134,14 +134,20 @@ loglevel 3
 
 ###################################################################
 # create dbdata partition
-mkdir /dbdata
-mount rfs /dev/block/stl10 /dbdata nosuid nodev check=no
-mount ext4 /dev/block/stl10 /dbdata wait noatime nosuid nodev
-mkdir /dbdata/databases
-chown system system /dbdata
-chown system system /dbdata/databases
-chmod 0771 /dbdata
-chmod 0777 /dbdata/databases
+    mkdir /dbdata
+    mount rfs /dev/block/stl10 /dbdata nosuid nodev check=no
+    mount ext4 /dev/block/stl10 /dbdata wait noatime nosuid nodev
+    mkdir /dbdata/databases
+    mkdir /dbdata/system
+    mkdir /dbdata/db-journal
+    chown system system /dbdata
+    chown system system /dbdata/databases
+    chown system system /dbdata/system
+    chown system system /dbdata/db-journal
+    chmod 0771 /dbdata
+    chmod 0777 /dbdata/databases
+    chmod 0775 /dbdata/system
+    chmod 0777 /dbdata/db-journal
 ###################################################################
 
     mkdir /data/fota 0771 system system
