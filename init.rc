@@ -316,9 +316,6 @@ setrlimit 13 40 40
 # Set timeout value for rmnet stats.
 write /sys/devices/virtual/net/rmnet0/timeout_suspend 5000000
 
-# Property below uses the Samsung RIL
-setprop ro.ril.samsung 1
-
 # Define the oom_adj values for the classes of processes that can be
 # killed by the kernel. These are used in ActivityManagerService.
 setprop ro.FOREGROUND_APP_ADJ 0
@@ -473,9 +470,6 @@ chmod 0777 /sys/class/rfkill/rfkill1/state
 chmod 6777 /system/bin/brcm_dutMode
 # +++++++++++++++++++++++++++++++++++++++++++
 
-# Include extra init file
-import /system/etc/init.local.rc
-
 # Run sysinit
 exec /system/bin/sysinit
 
@@ -544,9 +538,6 @@ service ril-daemon /system/bin/rild
   user root
   group radio cache inet misc audio sdcard_rw net_admin net_raw log bluetooth
 
-# GPS Support
-service glgps /system/bin/gpsd/glgps_samsungJupiter -c /system/etc/jupiter.xml
-
 service pppd_cdma /system/bin/pppd_runner
   user root
   group radio cache inet misc system
@@ -590,10 +581,6 @@ service ifcfg_eth0 /system/bin/ifconfig eth0 up
 #for WiFi MFG(TestMode)
 #SecFeatue.CDMA_WIFI
 service mfgloader /system/bin/mfgloader
-  disabled
-  oneshot
-
-service wlservice /system/bin/wlservice
   disabled
   oneshot
 # end of wifi
@@ -697,4 +684,3 @@ on property:net.dns1=
 
 on property:net.dns2=
   setprop net.dns2 8.8.4.4
-
