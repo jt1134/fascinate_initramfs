@@ -578,13 +578,6 @@ service ifcfg_eth0 /system/bin/ifconfig eth0 up
   disabled
   oneshot
 
-#for WiFi MFG(TestMode)
-#SecFeatue.CDMA_WIFI
-service mfgloader /system/bin/mfgloader
-  disabled
-  oneshot
-# end of wifi
-
 service dbus /system/bin/dbus-daemon --system --nofork
   socket dbus stream 660 bluetooth bluetooth
   socket bluetooth stream 660 bluetooth bluetooth
