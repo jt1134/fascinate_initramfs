@@ -1,0 +1,41 @@
+#!/stage1/sh
+export _PATH="$PATH"
+export PATH="/stage1"
+
+cd /
+
+mkdir -p /dev/block
+mknod -m 0644 /dev/block/bml6 b 137 6
+mknod -m 0644 /dev/block/stl6 b 138 6
+
+mknod -m 0644 /dev/block/mmcblk0 b 179 0
+mknod -m 0644 /dev/block/mmcblk0p1 b 179 1
+
+mkdir /data
+mkdir -p /mnt/.lfs
+mkdir -p /proc
+mkdir -p /sys
+
+insmod /lib/modules/fsr.ko
+insmod /lib/modules/fsr_stl.ko
+
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+
+insmod /lib/modules/j4fs.ko
+mount j4fs /dev/block/stl6 /mnt/.lfs
+insmod /lib/modules/param.ko
+
+mount -t ext4 /dev/block/mmcblk0p1 /data
+echo "1" > /data/.startrecovery
+umount /data
+rm -rf /data
+
+umount /sys
+umount /proc
+
+rm -rf /stage1 
+rm -rf /dev/*
+
+reboot
+
